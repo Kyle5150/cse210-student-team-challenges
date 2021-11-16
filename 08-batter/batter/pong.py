@@ -44,15 +44,123 @@ def drawrect(screen,x,y):
         x = 699    
     pygame.draw.rect(screen,RED,[x,y,100,20])
 
-def getPos(screen,x,y):
+# def getPosFood(screen,x,y):
+#     x = 20
+#     y = 20
+#     pos = x,y
+#     return pos
+
+def drawfoodrow1(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 40
     x = food_x
     y = food_y
-    pos = x,y
-    return pos
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
 
-def drawfood():
-    pos = getPos(screen, food_x, food_y)
-    pygame.draw.circle(screen, GREEN, pos, 5)
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 40
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow2(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 76
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 76
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow3(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 112
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 112
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow4(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 148
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 148
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow5(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 184
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 184
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow6(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 220
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 220
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow7(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 256
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 256
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+def drawfoodrow8(x,y):
+    # pos = getPosFood(screen, x, y)
+    number_of_food = 20
+    food_x = 40
+    food_y = 292
+    x = food_x
+    y = food_y
+    pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+
+    for n in range(number_of_food):
+        food_x += 36
+        food_y = 292
+        pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
 
 '''def drawball(screen,x,y):
     if x<0:
@@ -111,6 +219,8 @@ while not done:
         ball_change_y = ball_change_y * -1
     elif ball_x>rect_x and ball_x<rect_x+100 and ball_y==565:
         ball_change_y = ball_change_y * -1
+    elif ball_x == food_x:
+        ball_change_y = ball_change_x * -1
         score = score + 1
     elif ball_y>600:
         ball_change_y = ball_change_y * -1
@@ -121,12 +231,26 @@ while not done:
     #drawball(screen,ball_x,ball_y)
     drawrect(screen,rect_x,rect_y)
 
-    drawfood()
+    drawfoodrow1(food_x, food_y)
+
+    drawfoodrow2(food_x, food_y)
+
+    drawfoodrow3(food_x, food_y)
+
+    drawfoodrow4(food_x, food_y)
+
+    drawfoodrow5(food_x, food_y)
+
+    drawfoodrow6(food_x, food_y)
+
+    drawfoodrow7(food_x, food_y)
+
+    drawfoodrow8(food_x, food_y)
     
     #score board
     font= pygame.font.SysFont('Calibri', 15, False, False)
     text = font.render("Score = " + str(score), True, WHITE)
-    screen.blit(text,[600,100])    
+    screen.blit(text,[700,560])    
        
     pygame.display.flip()         
     clock.tick(60)
