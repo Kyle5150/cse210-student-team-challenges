@@ -17,21 +17,21 @@ pygame.display.set_caption("pong")
 rect_x = 400
 rect_y = 580
 
-#initial position of food
-food_x = 20
-food_y = 20
+# #initial position of food
+# food_x = 20
+# food_y = 20
 
 #initial speed of the paddle
 rect_change_x = 0
 rect_change_y = 0
 
 #initial position of the ball
-ball_x = 50
-ball_y = 50
+ball_x = 265
+ball_y = 400
 
 #speed of the ball
-ball_change_x = 5
-ball_change_y = 5
+ball_change_x = 4
+ball_change_y = 4
 
 score = 0
 
@@ -49,6 +49,9 @@ def drawrect(screen,x,y):
 #     y = 20
 #     pos = x,y
 #     return pos
+
+food_x_list = []
+food_y_list = []
 
 def drawfoodrow1(x,y):
     # pos = getPosFood(screen, x, y)
@@ -208,21 +211,21 @@ while not done:
     
     
     #this handles the movement of the ball.
-    if ball_x<0:
-        ball_x=0
+    if ball_x < 0:
+        ball_x = 0
         ball_change_x = ball_change_x * -1
-    elif ball_x>785:
-        ball_x=785
+    elif ball_x > 785:
+        ball_x = 785
         ball_change_x = ball_change_x * -1
-    elif ball_y<0:
-        ball_y=0
+    elif ball_y < 0:
+        ball_y = 0
         ball_change_y = ball_change_y * -1
-    elif ball_x>rect_x and ball_x<rect_x+100 and ball_y==565:
+    elif ball_x >= rect_x and ball_x <= rect_x + 100 and ball_y == 565:
         ball_change_y = ball_change_y * -1
-    elif ball_x == food_x and ball_y == food_y:
+    elif ball_x == food_x:
         ball_change_y = ball_change_x * -1
         score = score + 1
-    elif ball_y>600:
+    elif ball_y > 600:
         ball_change_y = ball_change_y * -1
         score = 0
         pygame.quit()                  
