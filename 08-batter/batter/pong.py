@@ -219,7 +219,7 @@ while not done:
         ball_change_y = ball_change_y * -1
     elif ball_x>rect_x and ball_x<rect_x+100 and ball_y==565:
         ball_change_y = ball_change_y * -1
-    elif ball_x == food_x:
+    elif ball_x == food_x and ball_y == food_y:
         ball_change_y = ball_change_x * -1
         score = score + 1
     elif ball_y>600:
