@@ -11,7 +11,7 @@ pygame.init()
 #Initializing the display window
 size = (800,600)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("pong")
+pygame.display.set_caption("Batter")
 
 #Starting coordinates of the paddle
 rect_x = 400
@@ -30,8 +30,8 @@ ball_x = 265
 ball_y = 400
 
 #speed of the ball
-ball_change_x = 4
-ball_change_y = 4
+ball_change_x = 2
+ball_change_y = 2
 
 score = 0
 
@@ -51,7 +51,9 @@ def drawrect(screen,x,y):
 #     return pos
 
 food_x_list = []
+
 food_y_list = []
+
 
 def drawfoodrow1(x,y):
     # pos = getPosFood(screen, x, y)
@@ -61,11 +63,15 @@ def drawfoodrow1(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 40
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow2(x,y):
     # pos = getPosFood(screen, x, y)
@@ -75,11 +81,15 @@ def drawfoodrow2(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 76
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow3(x,y):
     # pos = getPosFood(screen, x, y)
@@ -89,11 +99,15 @@ def drawfoodrow3(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 112
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow4(x,y):
     # pos = getPosFood(screen, x, y)
@@ -103,11 +117,15 @@ def drawfoodrow4(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 148
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow5(x,y):
     # pos = getPosFood(screen, x, y)
@@ -117,11 +135,15 @@ def drawfoodrow5(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 184
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow6(x,y):
     # pos = getPosFood(screen, x, y)
@@ -131,11 +153,15 @@ def drawfoodrow6(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 220
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow7(x,y):
     # pos = getPosFood(screen, x, y)
@@ -145,11 +171,15 @@ def drawfoodrow7(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 256
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 def drawfoodrow8(x,y):
     # pos = getPosFood(screen, x, y)
@@ -159,11 +189,15 @@ def drawfoodrow8(x,y):
     x = food_x
     y = food_y
     pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+    food_x_list.append(food_x)
+    food_y_list.append(food_y)
 
     for n in range(number_of_food):
         food_x += 36
         food_y = 292
         pygame.draw.circle(screen, GREEN, (food_x, food_y), 12)
+        food_x_list.append(food_x)
+        food_y_list.append(food_y)
 
 '''def drawball(screen,x,y):
     if x<0:
@@ -220,35 +254,36 @@ while not done:
     elif ball_y < 0:
         ball_y = 0
         ball_change_y = ball_change_y * -1
-    elif ball_x >= rect_x and ball_x <= rect_x + 100 and ball_y == 565:
+    elif ball_x>rect_x and ball_x<rect_x+100 and ball_y==565:
         ball_change_y = ball_change_y * -1
-    elif ball_x == food_x:
+    elif ball_x in food_x_list or ball_y in food_y_list:
         ball_change_y = ball_change_x * -1
         score = score + 1
     elif ball_y > 600:
         ball_change_y = ball_change_y * -1
         score = 0
-        pygame.quit()                  
+        # pygame.quit()                
     pygame.draw.rect(screen,WHITE,[ball_x,ball_y,15,15])
     
     #drawball(screen,ball_x,ball_y)
     drawrect(screen,rect_x,rect_y)
 
-    drawfoodrow1(food_x, food_y)
+    #draw food
+    drawfoodrow1(40, 40)
 
-    drawfoodrow2(food_x, food_y)
+    drawfoodrow2(40, 76)
 
-    drawfoodrow3(food_x, food_y)
+    drawfoodrow3(40, 112)
 
-    drawfoodrow4(food_x, food_y)
+    drawfoodrow4(40, 148)
 
-    drawfoodrow5(food_x, food_y)
+    drawfoodrow5(40, 184)
 
-    drawfoodrow6(food_x, food_y)
+    drawfoodrow6(40, 220)
 
-    drawfoodrow7(food_x, food_y)
+    drawfoodrow7(40, 256)
 
-    drawfoodrow8(food_x, food_y)
+    drawfoodrow8(40, 292)
     
     #score board
     font= pygame.font.SysFont('Calibri', 15, False, False)
