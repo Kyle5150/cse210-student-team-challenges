@@ -1,0 +1,40 @@
+from game import constants
+from game.point import Point
+
+class Actor:
+    def __init__(self):
+        """The class constructor."""
+        self._position = Point(0, 0)
+        self._velocity = Point(0, 0)
+
+    def get_position(self):
+        """Gets the actor's position in 2d space.
+        
+        Returns:
+            Point: The actor's position in 2d space.
+        """
+        return self._position
+
+    def get_velocity(self):
+        """Gets the actor's speed and direction.
+        
+        Returns:
+            Point: The actor's speed and direction.
+        """
+        return self._velocity
+
+    def set_position(self, position):
+        """Updates the actor's position to the given one.
+        
+        Args:
+            position (Point): The given position.
+        """
+        self._position = position
+
+    def set_velocity(self, velocity):
+        """Updates the actor's velocity to the given one.
+        
+        Args:
+            position (Point): The given velocity.
+        """
+        self._velocity = velocity

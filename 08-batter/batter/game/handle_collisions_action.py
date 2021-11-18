@@ -1,5 +1,7 @@
-class HandleCollisionsAction(Actor):
-    pass
+from game import constants
+from game.action import Action
+
+class HandleCollisionsAction(Action):
 
     paddle = cast["paddle"][0]
     ball = cast["ball"][0]
@@ -12,11 +14,7 @@ class HandleCollisionsAction(Actor):
     if ball_position.get_x() <= 0:
         pass
 
-
-
     bricks = cast["brick"]
-
-
 
     if paddle_position.get_y() - 1 == ball_position.get_y():
         min_x = paddle_position.get_x()
