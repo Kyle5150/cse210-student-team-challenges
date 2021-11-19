@@ -1,6 +1,7 @@
-from game.action import Action
+# from game.action import Action
+from game.actor import Actor
 
-class DrawActorsAction(Action):
+class DrawActorsAction(Actor):
 
     def __init__(self, output_service):
         """The class constructor.

@@ -1,31 +1,49 @@
+import random
 from game import constants
-from game.action import Action
+# from game.action import Action
 from game.actor import Actor
+from game.point import Point
 
-class HandleCollisionsAction(Action):
+class HandleCollisionsAction(Actor):
 
     def execute(self, cast):
-
-        cast["brick"] = []
-        # bricks = cast["brick"]
+        
+        bricks = cast["brick"]
         paddle = cast["paddle"][0] # there's only one
         ball = cast["ball"][0] # there's only one
         paddle_position = paddle.get_position()
         ball_position = ball.get_position()
 
-        if ball_position.get_x() >= constants.MAX_Y -1:
-            new_velocity = ball.get_velocity().reverse()
-            ball.set_velocity(new_velocity)
+        #ball/brick collision method 1
+        for brick in bricks:
+            brick_hitbox = []
+            for i in range(0, 2, 1): #brick size 2
+                brick_piece = Point((brick.get_position().get_x() + i), brick.get_position().get_y())
+                brick_hitbox.append(brick_piece)
 
-        if ball_position.get_x() <= 0:
-            new_velocity = ball.get_velocity().reverse()
-            ball.set_velocity(new_velocity)
+            for hitbox_component in brick_hitbox:
+                if ball.get_position().equals(hitbox_component):
+                    velocity = Point(random.randint(-1, 1), ball.get_velocity().reverse().get_y())
+                    ball.set_velocity(velocity)
+                    brick.set_text("")
+                    brick.set_position(Point(0, 0))
 
-        for i in cast["brick"]:
-            if ball_position.equals(cast["brick"].get_position()):
-                new_velocity = ball.get_velocity().reverse_y()
-                ball.set_velocity(new_velocity)
-                cast["brick"].remove(cast["brick"].get_position())
+                    # score.add_points(1)
+
+        #ball/brick collision method 2
+        # if ball_position.get_x() >= constants.MAX_Y -1:
+        #     new_velocity = ball.get_velocity().reverse()
+        #     ball.set_velocity(new_velocity)
+
+        # if ball_position.get_x() <= 0:
+        #     new_velocity = ball.get_velocity().reverse()
+        #     ball.set_velocity(new_velocity)
+
+        # for i in cast["brick"]:
+        #     if ball_position.equals(cast["brick"].get_position()):
+        #         new_velocity = ball.get_velocity().reverse_y()
+        #         ball.set_velocity(new_velocity)
+        #         cast["brick"].remove(cast["brick"].get_position())
 
         if paddle_position.get_y() - 1 == ball_position.get_y():
             min_x = paddle_position.get_x()

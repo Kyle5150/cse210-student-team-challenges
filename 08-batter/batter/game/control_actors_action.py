@@ -1,7 +1,8 @@
 from game import constants
-from game.action import Action
+# from game.action import Action
+from game.actor import Actor
 
-class ControlActorsAction(Action):
+class ControlActorsAction(Actor):
     def __init__(self, input_service):
         """The class constructor.
         
