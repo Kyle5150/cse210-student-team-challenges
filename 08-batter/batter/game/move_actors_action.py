@@ -1,8 +1,8 @@
 from game import constants
-from game.action import Action
+from game.actor import Actor
 from game.point import Point
 
-class MoveActorsAction(Action):
+class MoveActorsAction(Actor):
 
     def execute(self, cast):
         """Executes the action using the given actors.

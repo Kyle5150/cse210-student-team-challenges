@@ -20,4 +20,4 @@ class ControlActorsAction(Action):
         paddle.set_velocity(direction)
         ball = cast["ball"][0]
         ball.set_velocity(direction)
-        bricks = cast["brick"][0]
+        # bricks = cast["brick"][0]

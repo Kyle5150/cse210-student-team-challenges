@@ -1,25 +1,27 @@
 from game import constants
 from game.action import Action
+from game.actor import Actor
 
 class HandleCollisionsAction(Action):
 
     def execute(self, cast):
 
         cast["brick"] = []
+        # bricks = cast["brick"]
         paddle = cast["paddle"][0] # there's only one
         ball = cast["ball"][0] # there's only one
         paddle_position = paddle.get_position()
         ball_position = ball.get_position()
 
         if ball_position.get_x() >= constants.MAX_Y -1:
-            new_velocity = ball.get_velocity().reverse_y()
+            new_velocity = ball.get_velocity().reverse()
             ball.set_velocity(new_velocity)
 
         if ball_position.get_x() <= 0:
-            new_velocity = ball.get_velocity().reverse_y()
+            new_velocity = ball.get_velocity().reverse()
             ball.set_velocity(new_velocity)
 
-        for b in cast["brick"]:
+        for i in cast["brick"]:
             if ball_position.equals(cast["brick"].get_position()):
                 new_velocity = ball.get_velocity().reverse_y()
                 ball.set_velocity(new_velocity)
