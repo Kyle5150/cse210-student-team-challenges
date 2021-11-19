@@ -46,9 +46,10 @@ def main(screen):
     # create the script {key: tag, value: list}
     script = {}
 
+    actor = Actor()
     input_service = InputService(screen)
     output_service = OutputService(screen)
-    control_actors_action = ControlActorsAction(input_service)
+    control_actors_action = ControlActorsAction(input_service, actor)
     move_actors_action = MoveActorsAction()
     handle_collisions_acition = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)

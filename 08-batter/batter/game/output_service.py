@@ -25,7 +25,6 @@ class OutputService:
         """ 
         text = actor.get_text()
         position = actor.get_position()
-        velocity = actor.get_velocity()
         x = position.get_x()
         y = position.get_y()
         self._screen.print_at(text, x, y, 7) # WHITE
