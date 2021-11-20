@@ -78,8 +78,8 @@ class HandleCollisionsAction(Actor):
                 new_velocity = ball.get_velocity().reverse_paddle_y()
                 ball.set_velocity(new_velocity)
 
-        if paddle_position.get_x() == 0:
-            paddle_position = paddle_position
+        # if paddle_position.get_x() == 0:
+        #     paddle_position = paddle_position
 
-        if paddle_position.get_x() == 80:
-            paddle_position = paddle_position
+        # if paddle_position.get_x() == 80:
+        #     paddle_position = paddle_position
