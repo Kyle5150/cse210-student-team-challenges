@@ -24,11 +24,13 @@ class MoveActorsAction(Actor):
         """
         position = actor.get_position()
         velocity = actor.get_velocity()
+        # velocity = ball.get_velocity().reverse()
+        # actor.set_velocity = velocity
         x1 = position.get_x()
         y1 = position.get_y()
         x2 = velocity.get_x()
         y2 = velocity.get_y()
-        x = 1 + (x1 + x2 - 1) % (constants.MAX_X - 1)
-        y = 1 + (y1 + y2 - 1) % (constants.MAX_Y - 1)
+        x = 1 + (x1 + x2 - 1) % (constants.MAX_X - 1) 
+        y = 1 + (y1 + y2 - 1) % (constants.MAX_Y - 1) 
         position = Point(x, y)
         actor.set_position(position)

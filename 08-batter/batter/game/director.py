@@ -1,5 +1,6 @@
 from time import sleep
 from game import constants
+# from game.handle_collisions_action import HandleCollisionsAction
 
 class Director:
 
@@ -15,6 +16,7 @@ class Director:
     
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
+        # bottom = True
         while True:
             self._cue_action("input")
             self._cue_action("update")

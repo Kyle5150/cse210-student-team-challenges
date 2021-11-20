@@ -3,18 +3,22 @@ from game import constants
 # from game.action import Action
 from game.actor import Actor
 from game.point import Point
+from game.director import Director
+import sys
+import os
 
 class HandleCollisionsAction(Actor):
 
     def execute(self, cast):
         
+        # self.keep_playing = True
         bricks = cast["brick"]
         paddle = cast["paddle"][0] # there's only one
         ball = cast["ball"][0] # there's only one
         paddle_position = paddle.get_position()
         ball_position = ball.get_position()
 
-        #ball/brick collision method 1
+        # #ball/brick collision method 1
         for brick in bricks:
             brick_hitbox = []
             for i in range(0, 2, 1): #brick size 2
@@ -23,6 +27,7 @@ class HandleCollisionsAction(Actor):
 
             for hitbox_component in brick_hitbox:
                 if ball.get_position().equals(hitbox_component):
+                    # velocity = ball.get_velocity().reverse()
                     velocity = Point(random.randint(-1, 1), ball.get_velocity().reverse().get_y())
                     ball.set_velocity(velocity)
                     brick.set_text("")
@@ -30,18 +35,39 @@ class HandleCollisionsAction(Actor):
 
                     # score.add_points(1)
 
-        #ball/brick collision method 2
-        # if ball_position.get_x() >= constants.MAX_Y -1:
-        #     new_velocity = ball.get_velocity().reverse()
-        #     ball.set_velocity(new_velocity)
+        # ball/brick collision method 2
+        if ball_position.get_x() >= constants.MAX_X -1 or ball_position.get_x() <= 0 +1:
+            new_velocity = ball.get_velocity().reverse_x()
+            ball.set_velocity(new_velocity)
+
+        if ball_position.get_y() <= 0 +1:
+            new_velocity = ball.get_velocity().reverse_y()
+            ball.set_velocity(new_velocity)
+
+        if ball_position.get_y() >= constants.MAX_Y -1:
+            os.system("clear")
+            print("GAME OVER")
+            sys.exit()
+
+        empty = True
+
+        for hitbox_component in brick_hitbox:
+            if brick.get_text() == "":
+                continue
+            else:
+                empty = False
+                break
+
+        if empty == True:
+            sys.exit()
 
         # if ball_position.get_x() <= 0:
         #     new_velocity = ball.get_velocity().reverse()
         #     ball.set_velocity(new_velocity)
 
-        # for i in cast["brick"]:
+        # for brick in cast["brick"]:
         #     if ball_position.equals(cast["brick"].get_position()):
-        #         new_velocity = ball.get_velocity().reverse_y()
+        #         new_velocity = ball.get_velocity().reverse()
         #         ball.set_velocity(new_velocity)
         #         cast["brick"].remove(cast["brick"].get_position())
 

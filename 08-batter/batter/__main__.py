@@ -29,7 +29,7 @@ def main(screen):
         for y in range(2, 6):
             position = Point(x, y)
             brick = Actor()
-            brick.set_text("*")
+            brick.set_text("ø")
             brick.set_position(position)
             cast["brick"].append(brick)
 
@@ -38,7 +38,7 @@ def main(screen):
     position = Point(x, y)
     velocity = Point(1, -1)
     ball = Actor()
-    ball.set_text("@")
+    ball.set_text("~")
     ball.set_position(position)
     ball.set_velocity(velocity)
     cast["ball"] = [ball]
@@ -51,11 +51,11 @@ def main(screen):
     output_service = OutputService(screen)
     control_actors_action = ControlActorsAction(input_service, actor)
     move_actors_action = MoveActorsAction()
-    handle_collisions_acition = HandleCollisionsAction()
+    handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
     
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_acition]
+    script["update"] = [move_actors_action, handle_collisions_action]
     script["output"] = [draw_actors_action]
 
     # start the game
