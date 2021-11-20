@@ -74,7 +74,7 @@ class Point:
         return Point(x, y)
 
     def reverse_paddle_y(self):
-        x = random.randint(1, 3)
+        x = random.randint(-2, 2)
         y = self._y * -1
         return Point(x, y)
 

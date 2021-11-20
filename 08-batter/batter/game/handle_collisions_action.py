@@ -35,7 +35,6 @@ class HandleCollisionsAction(Actor):
 
                     # score.add_points(1)
 
-        # ball/brick collision method 2
         if ball_position.get_x() >= constants.MAX_X -1 or ball_position.get_x() <= 0 +1:
             new_velocity = ball.get_velocity().reverse_x()
             ball.set_velocity(new_velocity)
@@ -61,6 +60,7 @@ class HandleCollisionsAction(Actor):
         if empty == True:
             sys.exit()
 
+        # ball/brick collision method 2
         # if ball_position.get_x() <= 0:
         #     new_velocity = ball.get_velocity().reverse()
         #     ball.set_velocity(new_velocity)
@@ -77,3 +77,9 @@ class HandleCollisionsAction(Actor):
             if ball_position.get_x() >= min_x and ball_position.get_x() <= max_x:
                 new_velocity = ball.get_velocity().reverse_paddle_y()
                 ball.set_velocity(new_velocity)
+
+        if paddle_position.get_x() == 0:
+            paddle_position = paddle_position
+
+        if paddle_position.get_x() == 80:
+            paddle_position = paddle_position
